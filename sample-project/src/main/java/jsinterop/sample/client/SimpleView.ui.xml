@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+			xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel>
+		<div style="padding: 10px; font-weight: bold;">
+			The main goal of this project is to provide an easy to use and change playground for JSInterop. Moreover it also integrates a custom element which was created using Polymer. Of course also for the included todo-element it was not the main focus to provide a production ready element...
+		</div>
+		<div id="elementwrapper">
+			<div id="taskindicator">Status of the Task: <span id="taskstatus"/></div>
+			<todo-element ui:field="todoElement" user="Anonymous" task="Test-Task"></todo-element>
+		</div>
+		<div style="border-top: 1px solid black; margin-top: 5px; padding: 10px;">
+			<input type="text" id="changeTextInput" value="New text"></input>
+			<button ui:field="changeTextButton">Click me!</button>
+		</div>
+	</g:HTMLPanel>
+	
+</ui:UiBinder>

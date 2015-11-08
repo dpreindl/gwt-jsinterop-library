@@ -1,0 +1,18 @@
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.0//EN"
+        "http://google-web-toolkit.googlecode.com/svn/releases/2.0/distro-source/core/src/gwt-module.dtd">
+
+<module rename-to="JSInteropSample">
+
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="com.google.gwt.logging.Logging"/>
+    <inherits name="jsinterop.JsInteropCore"/>
+    <inherits name="jsinterop.JsInteropJQuery"/>
+
+    <set-property name="gwt.logging.logLevel" value="INFO"/>
+    <set-property name="gwt.logging.enabled" value="TRUE"/>
+    
+    <add-linker name="xsiframe" />
+
+    <entry-point class="jsinterop.sample.client.AppEntryPoint"/>
+
+</module>

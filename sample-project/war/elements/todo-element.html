@@ -1,0 +1,142 @@
+<head>
+	<link href="../bower_components/polymer/polymer.html" rel="import">
+	<link href="../bower_components/paper-checkbox/paper-checkbox.html" rel="import">
+	<link href="../bower_components/paper-item/paper-item.html" rel="import">
+	<link href="../bower_components/paper-input/paper-input.html" rel="import">
+	<link href="../bower_components/paper-material/paper-material.html" rel="import">
+	<link href="../bower_components/iron-icons/iron-icons.html" rel="import">
+	<link href="../bower_components/paper-button/paper-button.html" rel="import" >
+	<link href="../bower_components/paper-fab/paper-fab.html" rel="import">
+</head>
+
+<dom-module id="todo-element">
+<template>
+	<style>
+
+		paper-checkbox {
+			float: right;
+			margin: 2vh 2vw;
+		}
+
+		paper-fab {
+			position: absolute;
+			bottom: 3vh;
+			right: 2vw;
+		}
+
+		paper-fab.done{
+			background-color: green;
+		}
+
+		paper-fab.edit{
+			background-color: #F8f8F8;
+			color: black;
+		}
+
+
+		paper-material {
+			width: 90%;
+			margin: 25px auto;
+			position: relative;
+		}
+
+		paper-input{
+			margin: 0 5vw;
+		}
+
+	</style>
+
+
+	<paper-material class="todo" elevation="1">
+	<paper-checkbox checked="{{completed}}"></paper-checkbox>
+	<paper-fab hidden={{editing}}  icon="icons:create" on-tap="startEdit" class="edit" mini></paper-fab>	
+	<paper-fab hidden={{!editing}} icon="icons:done"   on-tap="stopEdit" class="done" mini></paper-fab>
+	<paper-item hidden="{{editing}}" id="task">{{task}}</paper-item>
+	<paper-input id="edit" hidden="{{!editing}}" value="{{task}}"></paper-input>
+	<paper-item class="info">Created by: <span>{{ user }}</span></paper-item>
+	<paper-item class="info">{{ time }}</paper-item>
+</paper-material>
+
+
+</template>
+<script>
+	Polymer({
+		is: 'todo-element',
+
+		properties: {
+	    	// declare properties for the element's public API
+	    	user: {
+	    		type: String,
+	    		value: ""	
+	    	},
+	    	task: {
+	    		type: String,
+	    		value: "",
+	    		observer: 'taskChanged'
+	    	},
+	    	oid: {
+	    		type: Number,
+	    		value: -1
+	    	},
+	    	time: {
+	    		type: String,
+	    		value: new Date().toLocaleString()
+	    	},
+	    	completed: {
+	    		type: Boolean,
+	    		value: false,
+	    		observer:'completeChanged'
+	    	},
+	    	editing: {
+	    		type: Boolean,
+	    		value: false	
+	    	}
+	    },
+
+	    // private properties
+	    isDirty: false,
+	    completeCallback: undefined,
+
+	    completeChanged: function(newValue, oldValue){
+	    	if(oldValue !== undefined && oldValue != newValue){
+		    	this.fire('complete',this);
+		    	if(this.completeCallback !== undefined){
+		    		this.completeCallback.completed(this);
+		    	}
+	    	}
+	    },
+
+	    startEdit: function(){
+	    	this.editing = true;
+	    },
+
+	    stopEdit: function(){
+	    	fireEvent = this.editing && this.isDirty;
+	    	this.editing = false;
+	    	this.isDirty = false;
+	    	if(fireEvent){
+				this.fire('edit', this);
+	    	}
+	    	
+	    },
+
+	    taskChanged: function(){
+	    	if(this.editing){
+	    		this.isDirty = true;
+	    	}
+	    },
+
+	    ready: function(){
+	    },
+
+	    callme: function(){
+	    	alert('called');
+	   	},
+
+	    setCompleteCallback: function(callback){
+	    	this.completeCallback = callback;
+	    }
+
+	});
+</script>
+</dom-module>

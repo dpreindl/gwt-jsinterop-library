@@ -1,0 +1,63 @@
+### Eclipse ###
+*.pydevproject
+.metadata
+/bin/
+/*/bin/
+/tmp/
+/*/tmp/
+/temp/
+/*/temp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+!ws_setup/metadata.plugins/org.eclipse.core.runtime/.settings
+.loadpath
+
+#GWT
+*/gwt-unitCache/
+*/war/WEB-INF/deploy/
+*/war/WEB-INF/classes/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PDT-specific
+.buildpath
+
+### Java ###
+*.class
+!*.class/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+!*.war/
+
+### Maven ###
+/target/
+/*/target/
+
+### generated files
+src_generated/
+apt_generated/
+.apt_generated/
+
+### Windows ###
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+.project
+*.log
+/*/log/**/*
+
