@@ -35,6 +35,7 @@ public interface Location {
      *
      * @param anchorname Specifies the anchor part of a URL
      */
+    @JsProperty
     void setHash(String anchorname);
 
     /**
@@ -92,6 +93,7 @@ public interface Location {
      *            location.href="file://host/path/example.txt")
      *            </ul>
      */
+    @JsProperty
     void setHref(String href);
 
     /**
