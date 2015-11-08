@@ -22,12 +22,6 @@ import jsinterop.annotations.JsType;
 public interface EventTarget {
 
     /**
-     *
-     * Register an event handler of a specific event type on the
-     * <code>EventTarget</code>.
-     */
-
-    /**
      * Register an event handler of a specific event type on the
      * <code>EventTarget</code>.
      *
