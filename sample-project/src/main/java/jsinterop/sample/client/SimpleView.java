@@ -82,7 +82,7 @@ public class SimpleView extends UIObject implements IsWidget {
         if (element.isCompleted()) {
             /* without jquery */
             CssStyleDeclaration style = document.getElementById("taskindicator").getStyle();
-            style.setProperty("color", "green");
+            style.setProperty("color", "blue");
             style.setProperty("font-weight", "bold");
             document.getElementById("taskstatus").setInnerText(getStatus(element));
         } else {
